@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class plagirismDetector {
     public static void main(String[] args) {
@@ -39,17 +36,21 @@ public class plagirismDetector {
 //        System.out.println(secondTextSentenceCount);
 //        ..................................
 
-        countAverageLengthElementOfText(firstTextWords);
-        //    System.out.println(countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement
+//        countAverageLengthElementOfText(firstTextWords);
+//        System.out.println(countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
+//        typeTokenRation(firstTextWords);
+        System.out.println(typeTokenRation(firstTextWords)); // return unique words divided on all words form inputted text.
+
+
     }
 
 
-    public static double countAverageLengthElementOfText(List<String> array) {
+    public static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
         double arSize = array.size();
         double lengthEachElement = 0;
         double sumLengthEachElement = 0;
         double averageLengthEachElement = 0;
-        for (int i = 0; i < arSize; i++) {               //for (String s : array) {
+        for (int i = 0; i < arSize; i++) {               //for (String s : array) {             // iterate in string
             lengthEachElement = array.get(i).length();   //lengthEachElement = s.length();
             sumLengthEachElement += lengthEachElement;
         }
@@ -57,7 +58,14 @@ public class plagirismDetector {
         return averageLengthEachElement;
 
     }
+    public static double typeTokenRation(List<String> array) { //method to return unique words divided on all words form inputted text.
+        double uniqueWordCount, allWordsArrayCount;
+        Set<String> uniqueWords = new LinkedHashSet<>();
+        uniqueWords.addAll(array);
+        uniqueWordCount=uniqueWords.size();
+        allWordsArrayCount= array.size();
+        // System.out.println(uniqueWords);
+        return uniqueWordCount / allWordsArrayCount;
     }
-
-
 }
+
