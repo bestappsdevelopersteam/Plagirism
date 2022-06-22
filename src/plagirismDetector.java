@@ -10,13 +10,13 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         for (int i = 0; i < firstTextWords.size(); i++) {
 //            System.out.println(firstTextWords.get(i));  //TEST . To check correction.
         }
-        int firstTextWordsCount = firstTextWords.size();
+        double firstTextWordsCount = firstTextWords.size();
 //        System.out.println(firstTextWordsCount);        //TEST . To check correction.
         List<String> firstTextSentence = new ArrayList<>(Arrays.asList(textOne.split("([.!?;:]+)")));//read sentence in array
         for (int i = 0; i < firstTextSentence.size(); i++) {
 //            System.out.println(firstTextSentence.get(i));    //TEST . To check correction.
         }
-        int firstTextSentenceCount = firstTextSentence.size();
+        double firstTextSentenceCount = firstTextSentence.size();
 //        System.out.println(firstTextSentenceCount);       //TEST . To check correction.
 
         System.out.println("Please enter second text and press ENTER : ");
@@ -26,21 +26,29 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         for (int j = 0; j < secondTextWords.size(); j++) {
 //            System.out.println(secondTextWords.get(j));     //TEST . To check correction.
         }
-        int secondTextWordsCount = secondTextWords.size();
+        double secondTextWordsCount = secondTextWords.size();
 //        System.out.println(secondTextWordsCount);      //TEST . To check correction.
         List<String> secondTextSentence = new ArrayList<>(Arrays.asList(textTwo.split("([.!?;:]+)")));
         for (int j = 0; j < secondTextSentence.size(); j++) {
 //            System.out.println(secondTextSentence.get(j));    //TEST . To check correction.
         }
-        int secondTextSentenceCount = secondTextSentence.size();
+        double secondTextSentenceCount = secondTextSentence.size();
 //        System.out.println(secondTextSentenceCount);    //TEST . To check correction.
 
         countAverageLengthElementOfText(firstTextWords);
 //        System.out.println(countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
+        countAverageLengthElementOfText(secondTextWords);
+
         typeTokenRation(firstTextWords);
 //        System.out.println(typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
+        typeTokenRation(secondTextWords);
+
         HapaxLegomenaRatio(firstTextWords);
+        HapaxLegomenaRatio(secondTextWords);
         System.out.println(HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
+        calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount);
+        System.out.println(calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount)); // return average number words in sentence.
+        calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount);
     }
 
     //        ..................................Some methods below.......................................
@@ -55,7 +63,6 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         }
         averageLengthEachElement = sumLengthEachElement / arSize;
         return averageLengthEachElement;
-
     }
 
     public static double typeTokenRation(List<String> array) { //method to return unique words divided on all words form inputted text.
@@ -67,10 +74,11 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         // System.out.println(uniqueWords);
         return uniqueWordCount / allWordsArrayCount;
     }
+
     public static double HapaxLegomenaRatio(List<String> array) { //method to return unique words divided on all words form inputted text.
         double oneMetWordCount = 0;
         double allWordsArrayCount;
-        allWordsArrayCount= array.size();
+        allWordsArrayCount = array.size();
         Set<String> oneMetWords = new HashSet<>(array);   //    get distinct elements in the list by inserting all elements in the set & then call static method frequency
         for (String s : oneMetWords) {  //new short way to check list element
             if (Collections.frequency(array, s) == 1) {
@@ -78,5 +86,9 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
             }
         }
         return oneMetWordCount / allWordsArrayCount;
+    }
+
+    public static double calcAverageWordsInSentence(double countedAllWords, double countedAllSentences) {// method return Average Words In Sentence
+        return countedAllWords / countedAllSentences;
     }
 }
