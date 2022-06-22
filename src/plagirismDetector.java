@@ -24,6 +24,7 @@ public class plagirismDetector {
 
         System.out.println("Please enter second text and press ENTER : ");
         String textTwo = sc.nextLine();
+        textTwo = textTwo.toLowerCase();
         List<String> secondTextWords = new ArrayList<String>(Arrays.asList(textTwo.split("([,.!?_;=+-:\\s]+)")));
         for (int j = 0; j < secondTextWords.size(); j++) {
 //            System.out.println(secondTextWords.get(j));
@@ -38,14 +39,23 @@ public class plagirismDetector {
 //        System.out.println(secondTextSentenceCount);
 //        ..................................
 
-        countAverageWordsLengthText1(firstTextWords.get());
+        countAverageLengthElementOfText(firstTextWords);
+        System.out.println(countAverageLengthElementOfText(firstTextWords)); // here not return averagelengthof element, but return list size?!(Why)
     }
 
 
-    static void countAverageWordsLengthText1(char[] array) {
-if (firstTextWords.size())
+    public static double countAverageLengthElementOfText(List<String> array) {
+        double arSize = array.size();
+        double lengthEachElement=0;
+        double sumLengthEachElement=0;
+        double averageLengthEachElement=0;
+        for (int i = 0; i < arSize; i++) {
+            lengthEachElement = array.get(i).length();
+            sumLengthEachElement+=lengthEachElement;
 
-        return 0;
+        }
+        averageLengthEachElement=sumLengthEachElement/arSize;
+        return averageLengthEachElement;
     }
 
 
