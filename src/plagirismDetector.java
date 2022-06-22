@@ -40,9 +40,8 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         typeTokenRation(firstTextWords);
 //        System.out.println(typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
         HapaxLegomenaRatio(firstTextWords);
-        System.out.println(HapaxLegomenaRatio(firstTextWords)); // return count of only one met word in inputted text.
+        System.out.println(HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
     }
-
 
     //        ..................................Some methods below.......................................
     public static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
@@ -70,7 +69,8 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
     }
     public static double HapaxLegomenaRatio(List<String> array) { //method to return unique words divided on all words form inputted text.
         double oneMetWordCount = 0;
-        double allWordsArrayCount = array.size();
+        double allWordsArrayCount;
+        allWordsArrayCount= array.size();
         Set<String> oneMetWords = new HashSet<>(array);   //    get distinct elements in the list by inserting all elements in the set & then call static method frequency
         for (String s : oneMetWords) {  //new short way to check list element
             if (Collections.frequency(array, s) == 1) {
