@@ -21,10 +21,10 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         double firstTextSentenceCount = firstTextSentence.size();//declare var to be "double"
 //        System.out.println(firstTextSentenceCount);       //TEST . To check correction.
 //-----------------------Next is print statement features of first text on console ....................................................
-        System.out.println("1. Avg. word length:     " + countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
-        System.out.println("2. Type-Token Ratio:     " + typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
-        System.out.println("3. Hapax Legomena Ratio: " + HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
-        System.out.println("4. Avg. sentence length: " + calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount)); // return average number words in sentence.
+        System.out.format("1. Avg. word length:     %.2f%n" , countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
+        System.out.format("2. Type-Token Ratio:     %.2f%n" , typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
+        System.out.format("3. Hapax Legomena Ratio: %.2f%n" , HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
+        System.out.format("4. Avg. sentence length: %.2f%n" , calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount)); // return average number words in sentence.
 
         System.out.println("Please enter second text and press ENTER : ");
         String textTwo = sc.nextLine();
@@ -42,10 +42,10 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         double secondTextSentenceCount = secondTextSentence.size();//declare var to be "double"
 //        System.outT.println(firstTextSentenceCount);       //TEST . To check correction.
 //-----------------------Next is print statement features of first text on console ....................................................
-        System.out.println("1. Avg. word length:     " + countAverageLengthElementOfText(secondTextWords)); // return averageLengthEachElement(in our case words)
-        System.out.println("2. Type-Token Ratio:     " + typeTokenRation(secondTextWords)); // return count of unique words divided on all words form inputted text.
-        System.out.println("3. Hapax Legomena Ratio: " + HapaxLegomenaRatio(secondTextWords)); // return count of only one met word divided on all words form inputted text.
-        System.out.println("4. Avg. sentence length: " + calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount)); // return average number words in sentence.
+        System.out.format("1. Avg. word length:     %.2f%n" , countAverageLengthElementOfText(secondTextWords)); // return averageLengthEachElement(in our case words)
+        System.out.format("2. Type-Token Ratio:     %.2f%n" , typeTokenRation(secondTextWords)); // return count of unique words divided on all words form inputted text.
+        System.out.format("3. Hapax Legomena Ratio: %.2f%n" , HapaxLegomenaRatio(secondTextWords)); // return count of only one met word divided on all words form inputted text.
+        System.out.format("4. Avg. sentence length: %.2f%n" , calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount)); // return average number words in sentence.
 
     }
 
