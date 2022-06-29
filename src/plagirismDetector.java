@@ -7,19 +7,9 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         String textOne = sc.nextLine();
         textOne = textOne.toLowerCase();
         List<String> firstTextWords = new ArrayList<>(Arrays.asList(textOne.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
-//        for (int i = 0; i < firstTextWords.size(); i++) {   //TEST . To check correction of read words.
-//            System.out.print(firstTextWords.get(i) + " ");  //TEST . To check correction of read words.
-//        }                                                  //TEST . To check correction of read words.
-//            System.out.println();                              //TEST . To check correction of read words.
-        double firstTextWordsCount = firstTextWords.size();     //declare var to be "double"
-//            System.out.println(firstTextWordsCount);        //TEST . To check correction - > count words in text.
+       double firstTextWordsCount = firstTextWords.size();     //declare var to be "double"
         List<String> firstTextSentence = new ArrayList<>(Arrays.asList(textOne.split("([.!?;:]+)")));//read sentence in array -use punctuation divider
-
-//        for (int j = 0; j < firstTextSentence.size(); j++) { //TEST . To check correction - > count sentence in text.
-//            System.out.println(firstTextSentence.get(i));    //TEST . To check correction - > count sentence in text.
-//        }                                                    //TEST . To check correction - > count sentence in text.
         double firstTextSentenceCount = firstTextSentence.size();//declare var to be "double"
-//        System.out.println(firstTextSentenceCount);       //TEST . To check correction.
 //-----------------------Next is print statement features of first text on console ....................................................
         double F1T1 = countAverageLengthElementOfText(firstTextWords);
         double F2T1 = typeTokenRation(firstTextWords);
@@ -34,17 +24,9 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         String textTwo = sc.nextLine();
         textTwo = textTwo.toLowerCase();
         List<String> secondTextWords = new ArrayList<>(Arrays.asList(textTwo.split("([,.!?_;=+-:()\\s]+)")));
-        for (int j = 0; j < secondTextWords.size(); j++) {
-//            System.out.println(secondTextWords.get(j));     //TEST . To check correction.
-        }
-        double secondTextWordsCount = secondTextWords.size();
-//        System.out.println(secondTextWordsCount);      //TEST . To check correction.
+         double secondTextWordsCount = secondTextWords.size();
         List<String> secondTextSentence = new ArrayList<>(Arrays.asList(textTwo.split("([.!?;:]+)")));
-        for (int j = 0; j < secondTextSentence.size(); j++) {
-//            System.out.println(secondTextSentence.get(j));    //TEST . To check correction.
-        }
         double secondTextSentenceCount = secondTextSentence.size();//declare var to be "double"
-//        System.outT.println(firstTextSentenceCount);       //TEST . To check correction.
 //-----------------------Next is print statement features of second text on console ....................................................
         double F1T2 = countAverageLengthElementOfText(secondTextWords);
         double F2T2 = typeTokenRation(secondTextWords);
@@ -54,7 +36,7 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         System.out.format("2. Type-Token Ratio:     %.2f%n", F2T2); // return count of unique words divided on all words form inputted text.
         System.out.format("3. Hapax Legomena Ratio: %.2f%n", F3T2); // return count of only one met word divided on all words form inputted text.
         System.out.format("4. Avg. sentence length: %.2f%n", F4T2); // return average number words in sentence.
-        System.out.format("Similarity of two text is : %.2f%n", calcSimilarity(F1T1, F2T1, F3T1, F4T1, F1T2, F2T2, F3T2, F4T2));
+        System.out.format("Coefficient of similarity between two text is : %.2f%n", calcSimilarity(F1T1, F2T1, F3T1, F4T1, F1T2, F2T2, F3T2, F4T2));
     }
 
     //        ..................................features methods below.......................................
@@ -70,7 +52,6 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         averageLengthEachElement = sumLengthEachElement / arSize;
         return averageLengthEachElement;
     }
-
     public static double typeTokenRation(List<String> array) { //method to return unique words divided on all words form inputted text.
         double uniqueWordCount, allWordsArrayCount;            // for correct divide in return statement declare double variable.
         Set<String> uniqueWords = new LinkedHashSet<>();
@@ -80,7 +61,6 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         // System.out.println(uniqueWords);
         return uniqueWordCount / allWordsArrayCount;
     }
-
     public static double HapaxLegomenaRatio(List<String> array) { //method to return unique words divided on all words form inputted text.
         double oneMetWordCount = 0;
         double allWordsArrayCount;
@@ -93,11 +73,9 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         }
         return oneMetWordCount / allWordsArrayCount;
     }
-
     public static double calcAverageWordsInSentence(double countedAllWords, double countedAllSentences) {// method return Average Words In Sentence
         return countedAllWords / countedAllSentences;
     }
-
     public static double calcSimilarity(double a, double b, double c, double d, double e, double f, double g, double h) {
         double aw = 11;
         double tt = 33;
