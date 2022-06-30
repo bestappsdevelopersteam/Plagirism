@@ -14,11 +14,11 @@ public class plagirismDetector {
         textTwo = textTwo.toLowerCase();
         List<String> secondTextWords = new ArrayList<>(Arrays.asList(textTwo.split("([,.!?_;=+-:()\\s]+)")));
         List<String> secondTextSentence = new ArrayList<>(Arrays.asList(textTwo.split("([.!?;:]+)")));
-        printDefaultFeatures(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
+        calcPrintParameters(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
         calcPrintSimilarity(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
     }
 
-    private static void printDefaultFeatures(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
+    private static void calcPrintParameters(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
         System.out.println("........Calculated parameters for first text.........");
         System.out.format("1. Avg. word length :     %.2f%n", countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
         System.out.format("2. Type-Token Ratio :     %.2f%n", typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
@@ -40,7 +40,7 @@ public class plagirismDetector {
                 calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())));
     }
 
-    public static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
+    private static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
         double arSize = array.size();
         double lengthEachElement = 0;
         double sumLengthEachElement = 0;
@@ -53,7 +53,7 @@ public class plagirismDetector {
         return averageLengthEachElement;
     }
 
-    public static double typeTokenRation(List<String> array) { //method to return unique words divided on all words form inputted text.
+    private static double typeTokenRation(List<String> array) { //method to return unique words divided on all words form inputted text.
         double uniqueWordCount, allWordsArrayCount;            // for correct divide in return statement declare double variable.
         Set<String> uniqueWords = new LinkedHashSet<>();
         uniqueWords.addAll(array);
@@ -62,7 +62,7 @@ public class plagirismDetector {
         return uniqueWordCount / allWordsArrayCount;
     }
 
-    public static double HapaxLegomenaRatio(List<String> array) { //method to return unique words divided on all words form inputted text.
+    private static double HapaxLegomenaRatio(List<String> array) { //method to return unique words divided on all words form inputted text.
         double oneMetWordCount = 0;
         double allWordsArrayCount;
         allWordsArrayCount = array.size();
@@ -75,11 +75,11 @@ public class plagirismDetector {
         return oneMetWordCount / allWordsArrayCount;
     }
 
-    public static double calcAverageWordsInSentence(double countedAllWords, double countedAllSentences) {// method return Average Words In Sentence
+    private static double calcAverageWordsInSentence(double countedAllWords, double countedAllSentences) {// method return Average Words In Sentence
         return countedAllWords / countedAllSentences;
     }
 
-    public static double calcSimilarity(double a, double b, double c, double d, double e, double f, double g, double h) {
+    private static double calcSimilarity(double a, double b, double c, double d, double e, double f, double g, double h) {
         double aw = 11;
         double tt = 33;
         double hl = 50;
