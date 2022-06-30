@@ -53,7 +53,7 @@ public class plagirismDetector {
         return averageLengthEachElement;
     }
 
-    private static double typeTokenRation(List<String> array) { //method to return unique words divided on all words form inputted text.
+    private static double typeTokenRation(List<String> array) { //the number of all different words used in the text divided by the number of all words
         double uniqueWordCount, allWordsArrayCount;            // for correct divide in return statement declare double variable.
         Set<String> uniqueWords = new LinkedHashSet<>();
         uniqueWords.addAll(array);
@@ -62,7 +62,7 @@ public class plagirismDetector {
         return uniqueWordCount / allWordsArrayCount;
     }
 
-    private static double HapaxLegomenaRatio(List<String> array) { //method to return unique words divided on all words form inputted text.
+    private static double HapaxLegomenaRatio(List<String> array) { //the number of words that occur only once in a text divided by the number of all words
         double oneMetWordCount = 0;
         double allWordsArrayCount;
         allWordsArrayCount = array.size();
