@@ -6,27 +6,34 @@ public class plagirismDetector {
         System.out.println("Please enter first text and press ENTER : ");
         String textOne = sc.nextLine();
         textOne = textOne.toLowerCase();
-        List<String> firstTextWords = listWordsInText(textOne); //read words in array -use punctuation divider
-        List<String> firstTextSentence = listSentenceInText(textOne); //read sentence in array -use punctuation divider
+        List<String> firstTextWords = listWordsInText(textOne); //make list of words-use punctuation divider
+        List<String> firstTextSentence = listSentenceInText(textOne); //make list of sentence -use punctuation divider
 
         System.out.println("Please enter second text and press ENTER : ");
         String textTwo = sc.nextLine();
         textTwo = textTwo.toLowerCase();
-        List<String> secondTextWords = listWordsInText(textTwo); //read words in array -use punctuation divider
-        List<String> secondTextSentence = listSentenceInText(textTwo);//read sentence in array -use punctuation divider
+        List<String> secondTextWords = listWordsInText(textTwo);
+        List<String> secondTextSentence = listSentenceInText(textTwo);
 
         calcPrintParameters(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
-        calcPrintSimilarity(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
+        double[] weight;
+        weight = returnWeight();
+        similarityReturn(weight[0], weight[1], weight[2], weight[3], countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
+                calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size()), countAverageLengthElementOfText(secondTextWords),
+                typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords),
+                calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size()));
     }
 
     private static List<String> listWordsInText(String text) {
         List<String> textWords = new ArrayList<>(Arrays.asList(text.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
         return textWords;
     }
+
     private static List<String> listSentenceInText(String text) {
         List<String> textSentences = new ArrayList<>(Arrays.asList(text.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
         return textSentences;
     }
+
     private static void calcPrintParameters(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
         System.out.println("........Calculated parameters for first text.........");
         System.out.format("1. Avg. word length :          %.2f%n", countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
@@ -41,14 +48,6 @@ public class plagirismDetector {
         System.out.format("4. Avg. sentence length :      %.2f%n", calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())); // return average number words in sentence.
         System.out.println();
     }
-
-    private static void calcPrintSimilarity(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
-        System.out.format("Coefficient of similarity between two text is : %.2f%n", calcSimilarity(countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
-                calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size()), countAverageLengthElementOfText(secondTextWords),
-                typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords),
-                calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())));
-    }
-
     private static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
         double arSize = array.size();
         double lengthEachElement = 0;
@@ -88,7 +87,7 @@ public class plagirismDetector {
         return countedAllWords / countedAllSentences;
     }
 
-    private static double calcSimilarity(double a, double b, double c, double d, double e, double f, double g, double h) {
+    public static double[] returnWeight() {
         double aw = 11;
         double tt = 33;
         double hl = 50;
@@ -118,17 +117,24 @@ public class plagirismDetector {
                 System.out.println("0.Exiting .......and calculating");
                 break;
             default:
-                System.out.println("Please check again input parameter carefully!");
-                break;
-        }
-        double similarity = ((Math.abs(a - e)) * aw + (Math.abs(b - f)) * tt + (Math.abs(c - g)) * hl + (Math.abs(d - h)) * as); //var take value for similarity calculation
-        if (similarity > 10)   // compare result for similarity with some number for more clearance to understand result.
-            System.out.println("These two texts not have a lot of similarity - congratulations.");
-        else
-            System.out.println("This two texts is very similar - pay attention!");
+                System.out.println("Next time check input parameter carefully! calculate with default parameters ....");
 
-        return similarity;
+        }
+
+        double[] arrWeight = {aw, tt, hl, as};
+        return arrWeight;
+
     }
 
+    private static void similarityReturn(double aw, double tt, double hl, double as, double a, double b, double c, double d, double e, double f, double g, double h) {
+        double similarity = ((Math.abs(a - e)) * aw + (Math.abs(b - f)) * tt + (Math.abs(c - g)) * hl + (Math.abs(d - h)) * as); //var take value for similarity calculation
+        if (similarity > 10) {// compare result for similarity with some number for more clearance to understand result.
+            System.out.println("These two texts not have a lot of similarity - congratulations.");
+        } else {
+            System.out.println("This two texts is very similar - pay attention!");
+        }
+
+        System.out.format("Coefficient of similarity is : %.2f%n", similarity);
+    }
 }
 
