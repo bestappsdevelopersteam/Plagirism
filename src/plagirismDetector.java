@@ -6,18 +6,27 @@ public class plagirismDetector {
         System.out.println("Please enter first text and press ENTER : ");
         String textOne = sc.nextLine();
         textOne = textOne.toLowerCase();
-        List<String> firstTextWords = new ArrayList<>(Arrays.asList(textOne.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
-        List<String> firstTextSentence = new ArrayList<>(Arrays.asList(textOne.split("([.!?;:]+)")));//read sentence in array -use punctuation divider
+        List<String> firstTextWords = listWordsInText(textOne); //read words in array -use punctuation divider
+        List<String> firstTextSentence = listSentenceInText(textOne); //read sentence in array -use punctuation divider
 
         System.out.println("Please enter second text and press ENTER : ");
         String textTwo = sc.nextLine();
         textTwo = textTwo.toLowerCase();
-        List<String> secondTextWords = new ArrayList<>(Arrays.asList(textTwo.split("([,.!?_;=+-:()\\s]+)")));
-        List<String> secondTextSentence = new ArrayList<>(Arrays.asList(textTwo.split("([.!?;:]+)")));
+        List<String> secondTextWords = listWordsInText(textTwo); //read words in array -use punctuation divider
+        List<String> secondTextSentence = listSentenceInText(textTwo);//read sentence in array -use punctuation divider
+
         calcPrintParameters(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
         calcPrintSimilarity(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
     }
 
+    private static List<String> listWordsInText(String text) {
+        List<String> textWords = new ArrayList<>(Arrays.asList(text.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
+        return textWords;
+    }
+    private static List<String> listSentenceInText(String text) {
+        List<String> textSentences = new ArrayList<>(Arrays.asList(text.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
+        return textSentences;
+    }
     private static void calcPrintParameters(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
         System.out.println("........Calculated parameters for first text.........");
         System.out.format("1. Avg. word length :          %.2f%n", countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
