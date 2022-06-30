@@ -21,4 +21,4 @@ its features and then derives a result of similarity between the two texts.
 The result of similarity is calculated by the formula:
 abs (F2T1-F2T2) * 33 + abs (F3T1-F3T2) * 50 + abs (F4T1-F4T2) * 0.4, where F1T1 is feature 1 (average word length) for text 1,
 F1T2 is feature 1 for text 2, F2T1 is feature 2 (type-token ratio) for text 1, etc. The numbers 11, 33, 50, 0.4 are weights.
-Make the program so that they can be easily changed.
+Maked the program can easily change it.
