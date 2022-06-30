@@ -21,19 +21,15 @@ public class plagirismDetector {
         System.out.format("2. Type-Token Ratio:     %.2f%n", typeTokenRation(secondTextWords)); // return count of unique words divided on all words form inputted text.
         System.out.format("3. Hapax Legomena Ratio: %.2f%n", HapaxLegomenaRatio(secondTextWords)); // return count of only one met word divided on all words form inputted text.
         System.out.format("4. Avg. sentence length: %.2f%n", calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())); // return average number words in sentence.
+        calcPrintSimilarity(firstTextWords, firstTextSentence, secondTextWords, secondTextSentence);
+    }
+
+    private static void calcPrintSimilarity(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
         System.out.format("Coefficient of similarity between two text is : %.2f%n", calcSimilarity(countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
                 calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size()), countAverageLengthElementOfText(secondTextWords),
                 typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords),
                 calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())));
     }
-
-
-//    public static double calcSimilarity() {
-//    calcSimilarity(countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
-//    calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount), countAverageLengthElementOfText(secondTextWords),
-//    typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords),
-//    calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount));
-//    return 0;
 
     public static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
         double arSize = array.size();
