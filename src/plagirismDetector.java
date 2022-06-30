@@ -7,29 +7,33 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         String textOne = sc.nextLine();
         textOne = textOne.toLowerCase();
         List<String> firstTextWords = new ArrayList<>(Arrays.asList(textOne.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
-        double firstTextWordsCount = firstTextWords.size();     //declare var to be "double"
         List<String> firstTextSentence = new ArrayList<>(Arrays.asList(textOne.split("([.!?;:]+)")));//read sentence in array -use punctuation divider
-        double firstTextSentenceCount = firstTextSentence.size();//declare var to be "double"
         System.out.format("1. Avg. word length:     %.2f%n", countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
         System.out.format("2. Type-Token Ratio:     %.2f%n", typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
         System.out.format("3. Hapax Legomena Ratio: %.2f%n", HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
-        System.out.format("4. Avg. sentence length: %.2f%n", calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount)); // return average number words in sentence.
+        System.out.format("4. Avg. sentence length: %.2f%n", calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size())); // return average number words in sentence.
         System.out.println("Please enter second text and press ENTER : ");
         String textTwo = sc.nextLine();
         textTwo = textTwo.toLowerCase();
         List<String> secondTextWords = new ArrayList<>(Arrays.asList(textTwo.split("([,.!?_;=+-:()\\s]+)")));
-        double secondTextWordsCount = secondTextWords.size();
         List<String> secondTextSentence = new ArrayList<>(Arrays.asList(textTwo.split("([.!?;:]+)")));
-        double secondTextSentenceCount = secondTextSentence.size();//declare var to be "double"
         System.out.format("1. Avg. word length:     %.2f%n", countAverageLengthElementOfText(secondTextWords)); // return averageLengthEachElement(in our case words)
         System.out.format("2. Type-Token Ratio:     %.2f%n", typeTokenRation(secondTextWords)); // return count of unique words divided on all words form inputted text.
         System.out.format("3. Hapax Legomena Ratio: %.2f%n", HapaxLegomenaRatio(secondTextWords)); // return count of only one met word divided on all words form inputted text.
-        System.out.format("4. Avg. sentence length: %.2f%n", calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount)); // return average number words in sentence.
-        System.out.format("Coefficient of similarity between two text is : %.2f%n",
-                calcSimilarity(countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
-                        calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount), countAverageLengthElementOfText(secondTextWords),
-                        typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords), calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount)));
+        System.out.format("4. Avg. sentence length: %.2f%n", calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())); // return average number words in sentence.
+        System.out.format("Coefficient of similarity between two text is : %.2f%n", calcSimilarity(countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
+                calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size()), countAverageLengthElementOfText(secondTextWords),
+                typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords),
+                calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())));
     }
+
+
+//    public static double calcSimilarity() {
+//    calcSimilarity(countAverageLengthElementOfText(firstTextWords), typeTokenRation(firstTextWords), HapaxLegomenaRatio(firstTextWords),
+//    calcAverageWordsInSentence(firstTextWordsCount, firstTextSentenceCount), countAverageLengthElementOfText(secondTextWords),
+//    typeTokenRation(secondTextWords), HapaxLegomenaRatio(secondTextWords),
+//    calcAverageWordsInSentence(secondTextWordsCount, secondTextSentenceCount));
+//    return 0;
 
     public static double countAverageLengthElementOfText(List<String> array) {// method return averageLengthEachElement(in our case words)
         double arSize = array.size();
@@ -50,7 +54,6 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         uniqueWords.addAll(array);
         uniqueWordCount = uniqueWords.size();
         allWordsArrayCount = array.size();
-        // System.out.println(uniqueWords);
         return uniqueWordCount / allWordsArrayCount;
     }
 
@@ -82,7 +85,7 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
         System.out.println("3.Hapax Legomena Ratio :     " + hl);
         System.out.println("4.Average words in sentence :" + as);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter some number [1, 2, 3 or 4] to change it weight coefficient : (or press \"0\" to  continue ) ");
+        System.out.println("Please enter some number [1, 2, 3 or 4] to change it weight coefficient use comma for divider : (or press \"0\" to  continue ) ");
         int choose = sc.nextInt();
         switch (choose) {
             case 1:
@@ -112,4 +115,6 @@ public class plagirismDetector { //different name  with mistake (plagirism)for h
 
         return similarity;
     }
+
 }
+
