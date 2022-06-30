@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class plagirismDetector { //different name  with mistake (plagirism)for hard to find my project :)
+public class plagirismDetector {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter first text and press ENTER : ");
