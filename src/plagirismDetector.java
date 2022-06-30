@@ -1,5 +1,5 @@
 import java.util.*;
-
+//My project
 public class plagirismDetector {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
