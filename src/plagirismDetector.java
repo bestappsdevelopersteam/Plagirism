@@ -20,16 +20,16 @@ public class plagirismDetector {
 
     private static void calcPrintParameters(List<String> firstTextWords, List<String> firstTextSentence, List<String> secondTextWords, List<String> secondTextSentence) {
         System.out.println("........Calculated parameters for first text.........");
-        System.out.format("1. Avg. word length :     %.2f%n", countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
-        System.out.format("2. Type-Token Ratio :     %.2f%n", typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
-        System.out.format("3. Hapax Legomena Ratio : %.2f%n", HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
-        System.out.format("4. Avg. sentence length : %.2f%n", calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size())); // return average number words in sentence.
+        System.out.format("1. Avg. word length :          %.2f%n", countAverageLengthElementOfText(firstTextWords)); // return averageLengthEachElement(in our case words)
+        System.out.format("2. Type-Token Ratio :          %.2f%n", typeTokenRation(firstTextWords)); // return count of unique words divided on all words form inputted text.
+        System.out.format("3. Hapax Legomena Ratio :      %.2f%n", HapaxLegomenaRatio(firstTextWords)); // return count of only one met word divided on all words form inputted text.
+        System.out.format("4. Avg. sentence length :      %.2f%n", calcAverageWordsInSentence(firstTextWords.size(), firstTextSentence.size())); // return average number words in sentence.
         System.out.println();
         System.out.println("........Calculated parameters for second text........");
-        System.out.format("1. Avg. word length :     %.2f%n", countAverageLengthElementOfText(secondTextWords)); // return averageLengthEachElement(in our case words)
-        System.out.format("2. Type-Token Ratio :     %.2f%n", typeTokenRation(secondTextWords)); // return count of unique words divided on all words form inputted text.
-        System.out.format("3. Hapax Legomena Ratio : %.2f%n", HapaxLegomenaRatio(secondTextWords)); // return count of only one met word divided on all words form inputted text.
-        System.out.format("4. Avg. sentence length : %.2f%n", calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())); // return average number words in sentence.
+        System.out.format("1. Avg. word length :          %.2f%n", countAverageLengthElementOfText(secondTextWords)); // return averageLengthEachElement(in our case words)
+        System.out.format("2. Type-Token Ratio :          %.2f%n", typeTokenRation(secondTextWords)); // return count of unique words divided on all words form inputted text.
+        System.out.format("3. Hapax Legomena Ratio :      %.2f%n", HapaxLegomenaRatio(secondTextWords)); // return count of only one met word divided on all words form inputted text.
+        System.out.format("4. Avg. sentence length :      %.2f%n", calcAverageWordsInSentence(secondTextWords.size(), secondTextSentence.size())); // return average number words in sentence.
         System.out.println();
     }
 
@@ -84,11 +84,11 @@ public class plagirismDetector {
         double tt = 33;
         double hl = 50;
         double as = 0.4;
-        System.out.println("..................Weight coef is :....................");
-        System.out.println("1.Average words length :     " + aw);
-        System.out.println("2.Type-Token Ratio :         " + tt);
-        System.out.println("3.Hapax Legomena Ratio :     " + hl);
-        System.out.println("4.Average words in sentence :" + as);
+        System.out.println("..................Weight coef is :...................");
+        System.out.println("1.Average words length :      " + aw);
+        System.out.println("2.Type-Token Ratio :          " + tt);
+        System.out.println("3.Hapax Legomena Ratio :      " + hl);
+        System.out.println("4.Average words in sentence :  " + as);
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter some number [1, 2, 3 or 4] to change it weight coefficient use comma for divider : (or press \"0\" to  continue ) ");
         int choose = sc.nextInt();
