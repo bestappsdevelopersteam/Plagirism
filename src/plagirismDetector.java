@@ -30,7 +30,7 @@ public class plagirismDetector {
     }
 
     private static List<String> listSentenceInText(String text) {
-        List<String> textSentences = new ArrayList<>(Arrays.asList(text.split("([,.!?_;=+-:()\\s]+)"))); //read words in array -use punctuation divider
+        List<String> textSentences = new ArrayList<>(Arrays.asList((text.split("([.!?;:]+)"))); //read words in array -use punctuation divider
         return textSentences;
     }
 
