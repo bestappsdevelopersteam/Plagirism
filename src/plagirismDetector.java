@@ -74,8 +74,8 @@ public class plagirismDetector {
         double oneMetWordCount = 0;
         double allWordsArrayCount;
         allWordsArrayCount = array.size();
-        Set<String> oneMetWords = new HashSet<>(array);   //    get distinct elements in the list by inserting all elements in the set & then call static method frequency
-        for (String s : oneMetWords) {  //new short way to check list element
+    //    Set<String> oneMetWords = new HashSet<>(array);//get distinct elements in the list by inserting all elements in the set & then call static method frequency
+        for (String s : array) {  //new short way to check list element
             if (Collections.frequency(array, s) == 1) {
                 oneMetWordCount++;
             }
