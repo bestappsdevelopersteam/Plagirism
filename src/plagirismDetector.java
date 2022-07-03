@@ -30,7 +30,7 @@ public class plagirismDetector {
     }
 
     private static List<String> listSentenceInText(String text) {
-        List<String> textSentences = new ArrayList<>(Arrays.asList((text.split("([.!?;:]+)"))); //read words in array -use punctuation divider
+        List<String> textSentences = new ArrayList<>(Arrays.asList((text.split("([.!?;:]+)")))); //read words in array -use punctuation divider
         return textSentences;
     }
 
@@ -125,7 +125,6 @@ public class plagirismDetector {
         return arrWeight;
 
     }
-
     private static void similarityReturn(double aw, double tt, double hl, double as, double a, double b, double c, double d, double e, double f, double g, double h) {
         double similarity = ((Math.abs(a - e)) * aw + (Math.abs(b - f)) * tt + (Math.abs(c - g)) * hl + (Math.abs(d - h)) * as); //var take value for similarity calculation
         if (similarity > 10) {// compare result for similarity with some number for more clearance to understand result.
